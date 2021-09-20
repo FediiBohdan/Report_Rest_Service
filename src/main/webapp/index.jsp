@@ -1,5 +1,26 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<form method="post" action="/login/">
+    <table>
+        <tr>
+            <td><label for="loginField">Name</label></td>
+            <td><input id="loginField" type="text" name="login"></td>
+        </tr>
+        <tr>
+            <td><label for="passwordField">Password</label></td>
+            <td><input id="passwordField" type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center"><input type="submit" value="Log in"></td>
+
+        </tr>
+        <tr>
+
+            <td colspan="2" style="text-align: center"><input type="submit" value="Register"></td>
+        </tr>
+
+    </table>
+
+</form>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class MainServlet extends HttpServlet {
         String action = request.getServletPath();
         switch (action) {
             case "/login":
-                loginOrRegister(request, response);
+                login(request, response);
                 break;
             case "/add-report-form":
                 showAddReportForm(request, response);
@@ -45,6 +45,9 @@ public class MainServlet extends HttpServlet {
             case "/register":
                 showRegisterForm(request, response);
                 break;
+            case "/register-confirm":
+                registerConfirm(request, response);
+                break;
             default:
                 showLoginRegisterForm(request, response);
                 break;
@@ -52,13 +55,26 @@ public class MainServlet extends HttpServlet {
     }
 
     private void showLoginRegisterForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("login_register.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void loginOrRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+
+//        if (isAuthenticated(login, password)) {
+        response.sendRedirect("/add-report-form");
+//        } else {
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/HTML");
+//        response.getWriter().write("Login failed! Or maybe you are not registered...");
+//        }
+    }
+
+    private void registerConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String login = request.getParameter("login");
+//        String password = request.getParameter("password");
 
 //        if (isAuthenticated(login, password)) {
         response.sendRedirect("/add-report-form");
@@ -74,11 +90,9 @@ public class MainServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
     private void showRegisterForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
         dispatcher.forward(request, response);
-
     }
 
     private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -90,6 +104,4 @@ public class MainServlet extends HttpServlet {
         System.out.println("Servlet was destroyed!");
         super.destroy();
     }
-
-
 }

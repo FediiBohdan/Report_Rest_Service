@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form action="/register" method="post">
+<form action="/register-confirm" method="post">
     <table style="width: 264px; height: 469px;">
         <tbody>
         <tr>

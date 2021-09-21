@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form action="/login" method="post">
+<form action="login" method="post">
     <table style="width: 240px;">
         <tbody>
         <tr>
@@ -21,7 +21,7 @@
         </tbody>
     </table>
 </form>
-<form action="/register" method="post">
+<form action="register" method="post">
     <table style="width: 254px; height: 21px;">
         <tbody>
         <tr style="height: 21px;">

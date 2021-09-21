@@ -33,8 +33,8 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action) {
-            case "/login":
-                login(request, response);
+            case "/login-confirm":
+                loginConfirm(request, response);
                 break;
             case "/add-report-form":
                 showAddReportForm(request, response);
@@ -59,12 +59,12 @@ public class MainServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void loginConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
 //        if (isAuthenticated(login, password)) {
-        response.sendRedirect("/add-report-form");
+        response.sendRedirect("add-report-form");
 //        } else {
 //        response.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/HTML");
@@ -77,7 +77,7 @@ public class MainServlet extends HttpServlet {
 //        String password = request.getParameter("password");
 
 //        if (isAuthenticated(login, password)) {
-        response.sendRedirect("/add-report-form");
+        response.sendRedirect("add-report-form");
 //        } else {
 //        response.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/HTML");

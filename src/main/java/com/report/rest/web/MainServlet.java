@@ -23,7 +23,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action) {
-            case "/login-or-register":
+            case "/login":
                 loginOrRegister(request, response);
                 break;
             case "/add-report-form":
@@ -31,6 +31,9 @@ public class MainServlet extends HttpServlet {
                 break;
             case "/insert-report":
                 addReport(request, response);
+                break;
+            case "/register":
+                showRegisterForm(request, response);
                 break;
             default:
                 showLoginRegisterForm(request, response);
@@ -61,6 +64,14 @@ public class MainServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+
+
+    private void showRegisterForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+        dispatcher.forward(request, response);
+
+    }
+
     private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Insert in DB
     }
@@ -70,4 +81,7 @@ public class MainServlet extends HttpServlet {
         System.out.println("Servlet was destroyed!");
         super.destroy();
     }
+
+
+
 }

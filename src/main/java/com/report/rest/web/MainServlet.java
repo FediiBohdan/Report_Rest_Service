@@ -1,20 +1,30 @@
 package com.report.rest.web;
 
+import com.report.rest.mail.SendAttachment;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
 
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
 
-//    @Override
-//    public void init() throws ServletException {
-//        super.init();
-//    }
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        SendAttachment sendAttachment = new SendAttachment();
+        try {
+            sendAttachment.dateOfSend();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
@@ -51,7 +61,7 @@ public class MainServlet extends HttpServlet {
         String password = request.getParameter("password");
 
 //        if (isAuthenticated(login, password)) {
-            response.sendRedirect("/add-report-form");
+        response.sendRedirect("/add-report-form");
 //        } else {
 //        response.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/HTML");
@@ -63,7 +73,6 @@ public class MainServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("addReport.jsp");
         dispatcher.forward(request, response);
     }
-
 
 
     private void showRegisterForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,7 +90,6 @@ public class MainServlet extends HttpServlet {
         System.out.println("Servlet was destroyed!");
         super.destroy();
     }
-
 
 
 }

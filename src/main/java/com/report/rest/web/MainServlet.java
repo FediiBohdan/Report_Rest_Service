@@ -23,23 +23,46 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action) {
-            case "/add-report":
+            case "/login-or-register":
+                loginOrRegister(request, response);
+                break;
+            case "/add-report-form":
+                showAddReportForm(request, response);
+                break;
+            case "/insert-report":
                 addReport(request, response);
                 break;
             default:
-                showLoginRegister(request, response);
+                showLoginRegisterForm(request, response);
                 break;
         }
     }
 
-    private void showLoginRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showLoginRegisterForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("login_register.jsp");
         dispatcher.forward(request, response);
     }
 
-    private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void loginOrRegister(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+
+//        if (isAuthenticated(login, password)) {
+            response.sendRedirect("/add-report-form");
+//        } else {
+//        response.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/HTML");
+//        response.getWriter().write("Login failed! Or maybe you are not registered...");
+//        }
+    }
+
+    private void showAddReportForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("addReport.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Insert in DB
     }
 
     @Override

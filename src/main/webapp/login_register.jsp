@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form method="post" action="login">
+<form method="post" action="login-or-register">
     <table>
         <tr>
             <td><label for="loginField">Name: </label></td>
@@ -23,10 +23,6 @@
         <tr>
             <td colspan="2" style="text-align: center"><input type="submit" value="Register"></td>
         </tr>
-
-        <div>
-            <a href="<%=request.getContextPath()%>/add-report" class="addReport">Add report</a>
-        </div>
     </table>
 
 </form>

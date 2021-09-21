@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form action="login" method="post">-
+<form action="/login" method="post">
     <table style="width: 240px;">
         <tbody>
         <tr>

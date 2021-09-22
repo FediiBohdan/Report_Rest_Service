@@ -96,8 +96,9 @@ public class MainServlet extends HttpServlet {
     }
 
     private void loginConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
+        String login = request.getParameter("nickname");
         String password = request.getParameter("password");
+        System.out.println(login + " "  + password);
 
         request.getSession().setAttribute("login", login);
         request.getSession().setAttribute("password", password);
@@ -145,11 +146,6 @@ public class MainServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void addReport(HttpServletRequest request, HttpServletResponse response) {
-        // TODO Insert in DB
-
-    }
-
     private boolean isAuthenticated(String login, String password) {
         boolean result = false;
         if (login != null && password != null) {
@@ -159,6 +155,15 @@ public class MainServlet extends HttpServlet {
             }
         }
         return result;
+    }
+
+    private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //Insert in DB
+        String report = request.getParameter("message");
+        System.out.println(report);
+
+        response.sendRedirect("add-report-form");
+
     }
 
     @Override

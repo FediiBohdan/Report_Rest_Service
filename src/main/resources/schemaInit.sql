@@ -1,8 +1,6 @@
 create schema andersen;
 
-alter schema andersen owner to postgres;
-
-create table if not exists login
+create table if not exists andersen.login
 (
 	id bigserial not null
 		constraint login_pkey
@@ -11,9 +9,7 @@ create table if not exists login
 	password varchar(20)
 );
 
-alter table login owner to postgres;
-
-create table if not exists "user"
+create table if not exists andersen.user
 (
 	id bigserial not null
 		constraint user_pkey
@@ -30,19 +26,15 @@ create table if not exists "user"
 	isdeleted boolean
 );
 
-alter table "user" owner to postgres;
-
-create table if not exists report
+create table if not exists andersen.report
 (
 	id bigserial not null
 		constraint report_pkey
 			primary key,
 	user_id bigint
 		constraint report_user_id_fkey
-			references "user",
+			references user,
 	dateofreport timestamp,
 	report text
 );
-
-alter table report owner to postgres;
 

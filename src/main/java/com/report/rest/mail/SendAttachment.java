@@ -24,7 +24,7 @@ public class SendAttachment extends TimerTask {
 //        }
 
         String taskDayString = String.valueOf(taskDay);
-        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDayString + " 18:27:00");
+        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDayString + " 18:35:00");
         Timer timer = new Timer();
         timer.schedule(new SendAttachment(), date);
     }

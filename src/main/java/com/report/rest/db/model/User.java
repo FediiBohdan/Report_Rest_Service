@@ -14,6 +14,33 @@ public class User {
     public LocalDateTime dateOfCreation;
     public Boolean isDeleted;
 
+    public User(String nickname, String name, String surname, String patronymic, String email, String password,
+                LocalDateTime dateOfLastUpdate, LocalDateTime dateOfCreation, Boolean isDeleted) {
+        this.nickname = nickname;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.email = email;
+        this.password = password;
+        this.dateOfLastUpdate = dateOfLastUpdate;
+        this.dateOfCreation = dateOfCreation;
+        this.isDeleted = isDeleted;
+    }
+
+    public User(long id, String nickname, String name, String surname, String patronymic, String email,
+                String password, LocalDateTime dateOfLastUpdate, LocalDateTime dateOfCreation, Boolean isDeleted) {
+        this.id = id;
+        this.nickname = nickname;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.email = email;
+        this.password = password;
+        this.dateOfLastUpdate = dateOfLastUpdate;
+        this.dateOfCreation = dateOfCreation;
+        this.isDeleted = isDeleted;
+    }
+
     public long getId() {
         return id;
     }

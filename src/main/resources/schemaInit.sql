@@ -2,30 +2,16 @@ create schema andersen;
 
 alter schema andersen owner to postgres;
 
-create table if not exists country
-(
-	id smallserial not null
-		constraint country_pkey
-			primary key,
-	name varchar(100)
-);
-
-alter table country owner to postgres;
-
-create table if not exists city
+create table if not exists login
 (
 	id bigserial not null
-		constraint city_pkey
+		constraint login_pkey
 			primary key,
-	name varchar(100),
-	lat varchar(11),
-	lon varchar(11),
-	country_id smallint
-		constraint city_country_id_fkey
-			references country
+	nickname varchar(20),
+	password varchar(20)
 );
 
-alter table city owner to postgres;
+alter table login owner to postgres;
 
 create table if not exists "user"
 (
@@ -33,17 +19,30 @@ create table if not exists "user"
 		constraint user_pkey
 			primary key,
 	name varchar(30),
-	email varchar(255),
-	country_id smallint
-		constraint user_country_id_fkey
-			references country,
-	city_id bigint
-		constraint user_city_id_fkey
-			references city,
+	surname varchar(30),
+	patronymic varchar(30),
+	email varchar(254),
+	login_id bigint
+		constraint user_login_id_fkey
+			references login,
 	dateoflastupdate timestamp,
 	dateofcreation timestamp,
 	isdeleted boolean
 );
 
 alter table "user" owner to postgres;
+
+create table if not exists report
+(
+	id bigserial not null
+		constraint report_pkey
+			primary key,
+	user_id bigint
+		constraint report_user_id_fkey
+			references "user",
+	dateofreport timestamp,
+	report text
+);
+
+alter table report owner to postgres;
 

@@ -16,15 +16,15 @@ public class SendAttachment extends TimerTask {
         String taskYear = String.valueOf(YearMonth.now().getYear());
         String taskMonth = String.valueOf(YearMonth.now().getMonthValue());
         int taskDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        int taskHour = 17;
-        int currentHour = LocalDateTime.now().getHour();
+//        int taskHour = 17;
+//        int currentHour = LocalDateTime.now().getHour();
 
-        if (currentHour > taskHour) {
-            taskDay++;
-        }
+//        if (currentHour > taskHour) {
+//            taskDay++;
+//        }
 
         String taskDayString = String.valueOf(taskDay);
-        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDayString + " 17:50:00");
+        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDayString + " 18:15:00");
         Timer timer = new Timer();
         timer.schedule(new SendAttachment(), date);
     }

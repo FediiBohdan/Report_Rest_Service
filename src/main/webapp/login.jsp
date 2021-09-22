@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form action="login-confirm" method="post">
+<form method="post" action="login-confirm">
     <table style="width: 240px;">
         <tbody>
         <tr>

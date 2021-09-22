@@ -16,9 +16,9 @@ public class SendAttachment extends TimerTask {
         String taskMonth = String.valueOf(YearMonth.now().getMonthValue());
         String taskDay = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDay + " 19:15:00");
-        Timer timer = new Timer();
-        timer.schedule(new SendAttachment(), date);
+        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDay + " 19:20:00");
+//        Timer timer = new Timer();
+//        timer.schedule(new SendAttachment(), date);
     }
 
     @Override

@@ -60,8 +60,10 @@ public class MainServlet extends HttpServlet {
     }
 
     private void loginConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
+        String login = request.getParameter("nickname");
         String password = request.getParameter("password");
+
+        System.out.println(login + " "  + password);
 
 //        if (isAuthenticated(login, password)) {
         response.sendRedirect("add-report-form");
@@ -97,6 +99,10 @@ public class MainServlet extends HttpServlet {
 
     private void addReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //Insert in DB
+        String report = request.getParameter("message");
+        System.out.println(report);
+
+        response.sendRedirect("add-report-form");
     }
 
     @Override

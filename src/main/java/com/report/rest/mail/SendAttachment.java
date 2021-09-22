@@ -6,7 +6,6 @@ import javax.mail.internet.MimeMessage;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.*;
 
@@ -15,16 +14,9 @@ public class SendAttachment extends TimerTask {
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String taskYear = String.valueOf(YearMonth.now().getYear());
         String taskMonth = String.valueOf(YearMonth.now().getMonthValue());
-        int taskDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-//        int taskHour = 17;
-//        int currentHour = LocalDateTime.now().getHour();
+        String taskDay = String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-//        if (currentHour > taskHour) {
-//            taskDay++;
-//        }
-
-        String taskDayString = String.valueOf(taskDay);
-        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDayString + " 18:47:00");
+        Date date = dateFormatter.parse(taskYear + "-" + taskMonth + "-" + taskDay + " 19:15:00");
         Timer timer = new Timer();
         timer.schedule(new SendAttachment(), date);
     }
@@ -34,7 +26,7 @@ public class SendAttachment extends TimerTask {
         final String user = "orangegroup2222@gmail.com";
         final String password = "awdAWD12";
 
-        String to = "gizelbard@ukr.net";
+        String receiver = "gizelbard@ukr.net";
 
         Properties props = new Properties();
         props.setProperty("mail.transport.protocol", "smtp");
@@ -55,7 +47,7 @@ public class SendAttachment extends TimerTask {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
             message.setSubject("Orange team. Time management");
             message.setText("Here will be report");
 

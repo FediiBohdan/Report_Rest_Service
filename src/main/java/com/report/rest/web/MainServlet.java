@@ -124,7 +124,7 @@ public class MainServlet extends HttpServlet {
 //        } else {
 //        response.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/HTML");
-//        response.getWriter().write("Login failed! Or maybe you are not registered...");
+//        response.getWriter().write("Registration failed!");
 //        }
     }
 
